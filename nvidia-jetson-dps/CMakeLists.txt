@@ -1,0 +1,66 @@
+#Copyright (c) Microsoft. All rights reserved.
+#Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+#this is CMakeLists.txt for nvidia-jetson-dps
+
+#Compile As C99
+if (CMAKE_VERSION VERSION_LESS "3.1")
+    if (CMAKE_C_COMPILER_ID STREQUAL "GNU" OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
+        set (CMAKE_C_FLAGS "--std=c99 /DWIN32 /D_WINDOWS /W3")
+        if (NOT IN_OPENWRT)
+            set (CMAKE_CXX_FLAGS "--std=c++11 /DWIN32 /D_WINDOWS /W3 /GR /EHsc")
+        endif()
+    endif()
+else()
+    set (CMAKE_C_STANDARD 99)
+    set (CMAKE_CXX_STANDARD 11)
+endif()
+
+cmake_minimum_required(VERSION 2.8)
+
+# Uncomment the following line if you want to build with vcpkg of azure_iot_sdks
+# find_package(azure_iot_sdks REQUIRED)
+
+set(nvidia-jetson-dps_h_files
+    ./jetson_impl.h
+    ./pnp_device.h
+    ./utilities/deepstream_interface.h
+    ./utilities/deviceinfo_interface.h
+    ./utilities/digitaltwin_client_helper.h
+    ./utilities/digitaltwin_serializer.h
+    ./utilities/thermalzones_interface.h
+)
+
+set(nvidia-jetson-dps_c_files
+    ./jetson_impl.c
+    ./pnp_device.c
+    ./utilities/deepstream_interface.c
+    ./utilities/deviceinfo_interface.c
+    ./utilities/digitaltwin_client_helper.c
+    ./utilities/digitaltwin_serializer.c
+    ./utilities/thermalzones_interface.c
+    ./main.c
+)
+
+include_directories(.)
+include_directories(./utilities)
+include_directories(${PROJECT_SOURCE_DIR}/deps/parson)
+include_directories(${SHARED_UTIL_INC_FOLDER})
+include_directories(${IOTHUB_CLIENT_INC_FOLDER})
+include_directories(${DIGITALTWIN_CLIENT_INC_FOLDER})
+include_directories(${DEV_AUTH_MODULES_CLIENT_INC_FOLDER})
+
+add_executable(nvidia-jetson-dps ${nvidia-jetson-dps_c_files} ${nvidia-jetson-dps_h_files})
+
+target_link_libraries(nvidia-jetson-dps
+parson
+iothub_client_mqtt_transport
+iothub_client_mqtt_ws_transport
+prov_device_ll_client
+prov_mqtt_transport
+iothub_client
+digitaltwin_client
+prov_auth_client
+aziotsharedutil
+umqtt
+uuid)

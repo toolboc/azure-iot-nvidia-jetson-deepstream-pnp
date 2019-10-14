@@ -1,0 +1,11 @@
+{
+    "codeGenExecutionItems": [
+        {
+            "capabilityModelPath": "urn_nvidia_jetson_1.capabilitymodel.json",
+            "projectName": "nvidia-jetson-dps",
+            "languageLabel": "ANSI C",
+            "codeGenProjectType": "CMake",
+            "deviceConnectionType": "SymmetricKey"
+        }
+    ]
+}

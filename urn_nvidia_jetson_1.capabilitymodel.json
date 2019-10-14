@@ -1,0 +1,183 @@
+{
+    "@context": "http://azureiot.com/v1/contexts/IoTModel.json",
+    "@id": "urn:nvidia:jetson:1",
+    "@type": "CapabilityModel",
+    "displayName": "Nvidia Jetson Capability Model",
+    "implements": [
+        {
+            "name": "deviceinfo",
+            "schema": {
+                "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1",
+                "@type": "Interface",
+                "displayName": "Device Information",
+                "contents": [
+                    {
+                        "@type": "Property",
+                        "name": "manufacturer",
+                        "displayName": "Manufacturer",
+                        "schema": "string",
+                        "description": "Company name of the device manufacturer. This could be the same as the name of the original equipment manufacturer (OEM). Ex. Contoso."
+                    },
+                    {
+                        "@type": "Property",
+                        "name": "model",
+                        "displayName": "Device model",
+                        "schema": "string",
+                        "description": "Device model name or ID. Ex. Surface Book 2."
+                    },
+                    {
+                        "@type": "Property",
+                        "name": "swVersion",
+                        "displayName": "Software version",
+                        "schema": "string",
+                        "description": "Version of the software on your device. This could be the version of your firmware. Ex. 1.3.45"
+                    },
+                    {
+                        "@type": "Property",
+                        "name": "osName",
+                        "displayName": "Operating system name",
+                        "schema": "string",
+                        "description": "Name of the operating system on the device. Ex. Windows 10 IoT Core."
+                    },
+                    {
+                        "@type": "Property",
+                        "name": "processorArchitecture",
+                        "displayName": "Processor architecture",
+                        "schema": "string",
+                        "description": "Architecture of the processor on the device. Ex. x64 or ARM."
+                    },
+                    {
+                        "@type": "Property",
+                        "name": "processorManufacturer",
+                        "displayName": "Processor manufacturer",
+                        "schema": "string",
+                        "description": "Name of the manufacturer of the processor on the device. Ex. Intel."
+                    },
+                    {
+                        "@type": "Property",
+                        "name": "totalStorage",
+                        "displayName": "Total storage",
+                        "schema": "long",
+                        "displayUnit": "kilobytes",
+                        "description": "Total available storage on the device in kilobytes. Ex. 2048000 kilobytes."
+                    },
+                    {
+                        "@type": "Property",
+                        "name": "totalMemory",
+                        "displayName": "Total memory",
+                        "schema": "long",
+                        "displayUnit": "kilobytes",
+                        "description": "Total available memory on the device in kilobytes. Ex. 256000 kilobytes."
+                    }
+                ],
+                "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
+            }
+        },
+        {
+            "name": "thermalzones",
+            "schema": {
+                "@id": "urn:nvidia:thermal_zones:1",
+                "@type": "Interface",
+                "displayName": "thermal zones",
+                "contents": [
+                    {
+                        "@type": "Telemetry",
+                        "name": "thermal_zone_0",
+                        "displayName": "Thermal Zone 0",
+                        "comment": "The temperature of thermal zone 0",
+                        "schema": "double",
+                        "displayUnit": "C"
+                    },
+                    {
+                        "@type": "Telemetry",
+                        "name": "thermal_zone_1",
+                        "displayName": "Thermal Zone 1",
+                        "comment": "The temperature of thermal zone 1",
+                        "schema": "double",
+                        "displayUnit": "C"
+                    },
+                    {
+                        "@type": "Telemetry",
+                        "name": "thermal_zone_2",
+                        "displayName": "Thermal Zone 2",
+                        "comment": "The temperature of thermal zone 2",
+                        "schema": "double",
+                        "displayUnit": "C"
+                    },
+                    {
+                        "@type": "Telemetry",
+                        "name": "thermal_zone_3",
+                        "displayName": "Thermal Zone 3",
+                        "comment": "The temperature of thermal zone 3",
+                        "schema": "double",
+                        "displayUnit": "C"
+                    },
+                    {
+                        "@type": "Telemetry",
+                        "name": "thermal_zone_4",
+                        "displayName": "Thermal Zone 4",
+                        "comment": "The temperature of thermal zone 4",
+                        "schema": "double",
+                        "displayUnit": "C"
+                    },
+                    {
+                        "@type": "Telemetry",
+                        "name": "thermal_zone_5",
+                        "displayName": "Thermal Zone 5",
+                        "comment": "The temperature of thermal zone 5",
+                        "schema": "double",
+                        "displayUnit": "C"
+                    }
+                ],
+                "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
+            }
+        },
+        {
+            "name": "deepstream",
+            "schema": {
+                "@id": "urn:nvidia:deepstream:1",
+                "@type": "Interface",
+                "displayName": "deepstream",
+                "contents": [
+                    {
+                        "@type": "Telemetry",
+                        "name": "deepstream_status",
+                        "displayName": "DeepStream status",
+                        "comment": "A status to indicate if deepstream is running",
+                        "schema": "boolean"
+                    },
+                    {
+                        "@type": "Telemetry",
+                        "name": "deepstream_detections",
+                        "displayName": "Detections",
+                        "comment": "The count of object detections produced by running deepstream inferencing",
+                        "schema": "integer"
+                    },
+                    {
+                        "@type": "Command",
+                        "description": "This command will set the configuration file used by Nvidia DeepStream.",
+                        "name": "setDeepStreamConfig",
+                        "commandType": "synchronous",
+                        "request": {
+                            "name": "deepStreamConfigPath",
+                            "schema": "string"
+                        },
+                        "response": {
+                            "name": "setDeepStreamConfigResponse",
+                            "schema": {
+                                "@type": "Object",
+                                "fields": [
+                                    {
+                                        "name": "description",
+                                        "schema": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
+            }
+        }
+    ]
+  }
