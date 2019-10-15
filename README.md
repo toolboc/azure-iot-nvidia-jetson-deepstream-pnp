@@ -239,14 +239,22 @@ Compiling this project requires building against the current `public-preview` of
     ```bash
     deepstream-app -c ~/azure-iot-sdk-c/azure-iot-nvidia-jetson-deepstream-pnp/deepstream/configs/deepstream-app/source1_usb_dec_infer_resnet_int8_windowed.txt 
     ```
+
+    You should see output similar to the following:
+
+    ![](./assets/deepstreamwindowed.png)
     
     If the deepstream-app starts without issues and continues running, you can be assured that the configuration and your webcam are working.  You can terminate the application by pressing "CTRL+C"
 
     If you are not connected to a monitor, you will want to run the following:
 
+    (Note: There will not be any visualization on screen as in the previous example)
+
     ```bash
     deepstream-app -c ~/azure-iot-sdk-c/azure-iot-nvidia-jetson-deepstream-pnp/deepstream/configs/deepstream-app/source1_usb_dec_infer_resnet_int8_novisual.txt 
     ```
+
+    ![](./assets/deepstreamnovisual.png)
 
     Verify that the deepstream-app can start with either of these configurations, once you have concluded that the configuration is good, we can now set it from IoT Central.
 
@@ -254,14 +262,37 @@ Compiling this project requires building against the current `public-preview` of
 
     ![](./assets/setdeepstreamlive.png)
 
-    Paste in the following value to set the DeepStream configuration path and begin producing telemetry for detected objects from the attached USB camera's video stream:
+    Modify the following value to set the DeepStream configuration path and begin producing telemetry for detected objects from the attached USB camera's video stream:
+
+    (Note: ~ expansion will not work here, you must explicitily specify the path to the sample config in the current user's home directory)
+
+    Obtain the current user with:
 
     ```
-    ~/azure-iot-sdk-c/azure-iot-nvidia-jetson-deepstream-pnp/deepstream/configs/deepstream-app/source1_usb_dec_infer_resnet_int8_novisual.txt 
+    echo $USER
+    ```
+    
+    Then update this command by replacing the [$USER] placeholder with the value from the previous command:
 
     ```
+    /home/[$USER]/azure-iot-sdk-c/azure-iot-nvidia-jetson-deepstream-pnp/deepstream/configs/deepstream-app/source1_usb_dec_infer_resnet_int8_novisual.txt
+    ```
+
+    For example, if `echo $USER` returns `nvidia`, you would use:
+
+    ```
+    /home/nvidia/azure-iot-sdk-c/azure-iot-nvidia-jetson-deepstream-pnp/deepstream/configs/deepstream-app/source1_usb_dec_infer_resnet_int8_novisual.txt
+    ```
+
+    Now paste in the modified command and click the "Run" button
+
+    Be careful that you do not include any trailing whitespace!
 
     You should see the deepstream-app startup output appear in the PnP application output.  After a short while, the app will begin detecting objects using the included configuration which will appear in the "Detections" section of your "Overview" View.  After you have verified this is working, you are ready to customize the configuration to your needs.  
+
+    ![](./assets/setdeepstreamresult.png)
+
+    ![](./assets/deepstreamdetections.png)
     
 1. Customzing the PnP Application
 
