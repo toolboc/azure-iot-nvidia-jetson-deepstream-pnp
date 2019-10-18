@@ -8,7 +8,7 @@ The nvidia-jetson-dcs application accomplishes this using a [device connection s
 
 The content in this README will focus primarily on the nvidia-jetson-dps application to demonstrate how to create a self-provisioning Azure IoT PnP app that can remotely launch DeepStream processing using a custom configuration present on your Nvidia Jetson device. This will enable you to create a cloud configurable Intelligent Video Application with device monitoring and live telemetry in [IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/?WT.mc_id=github-deepstreampnp-pdecarlo).
 
-With this design, you can remotely activate a custom deepstream configuration that leverages an inferencing model of your choice to perform object detection on any available DeepStream input sources including: camera  (USB & CSI), RTSP Streams, and local h.264/5 video files 
+With this design, you can remotely activate a custom DeepStream configuration that leverages an inference model of your choice to perform object detection on any available DeepStream input sources including: camera  (USB & CSI), RTSP Streams, and local h.264/5 video files 
 
 ## Getting Started
 
@@ -44,7 +44,7 @@ Compiling this project requires building against the current `public-preview` of
     sudo apt-get install ./deepstream-4.0_4.0.1-1_arm64.deb
     ```
 
-    If you have issues installing the DeepStream SDK, refer to [the offical DeepStream Developer Guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html) for more information.
+    If you have issues installing the DeepStream SDK, refer to [the official DeepStream Developer Guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html) for more information.
 
 1. Create an IoT Central Application and obtain the DPS connection parameters
 
@@ -102,7 +102,7 @@ Compiling this project requires building against the current `public-preview` of
 
     ![](./assets/generatedefaultviews.png)   
 
-    This process will analyaze our uploaded device capability model and do a "best effort" to create a viewing dashboard.  Select the Generted "Overview" View and remove all of the windows it has created to start fresh.
+    This process will analyze our uploaded device capability model and do a "best effort" to create a viewing dashboard.  Select the Generated "Overview" View and remove all of the windows it has created to start fresh.
 
     On the left-side panel, drag an "image" view over to the right-side and expand it to be 2x2:
 
@@ -141,9 +141,9 @@ Compiling this project requires building against the current `public-preview` of
 
     ![](./assets/thermal.png)
 
-    At this point, feel free to play around and customize to your desire, there are additional properties and visualiztions that can be used.  Once you are satisfied, select "Save".
+    At this point, feel free to play around and customize to your desire, there are additional properties and visualizations that can be used.  Once you are satisfied, select "Save".
 
-    The last step if very important as DPS will fail to register your device if the capbility model has not been published!  Select "Publish" from the upper right then select "Publish" again on the resulting prompt:
+    The last step if very important as DPS will fail to register your device if the capability model has not been published!  Select "Publish" from the upper right then select "Publish" again on the resulting prompt:
 
     ![](./assets/publish.png)
 
@@ -164,7 +164,7 @@ Compiling this project requires building against the current `public-preview` of
     git clone https://github.com/toolboc/azure-iot-nvidia-jetson-deepstream-pnp.git
     ```
 
-    Open the `CMakeLists.txt` in the **azure-iot-sdk-c** folder and modify it to include the **azure-iot-nvidia-jetson-deepstream-pnp** folder so that the pnp applcations will be built together with the Device SDK. To do this, run:
+    Open the `CMakeLists.txt` in the **azure-iot-sdk-c** folder and modify it to include the **azure-iot-nvidia-jetson-deepstream-pnp** folder so that the pnp applications will be built together with the Device SDK. To do this, run:
     ```bash
     nano ~/azure-iot-sdk-c/CMakeLists.txt 
     ```
@@ -200,7 +200,7 @@ Compiling this project requires building against the current `public-preview` of
 
     Once you have obtained the Primary Key, execute the following: 
 
-    (Note: the value for -di can be any name of your choosing and will become the name registed to IoT Central when the application is first run)
+    (Note: the value for -di can be any name of your choosing and will become the name registered to IoT Central when the application is first run)
 
     ```
     dps-keygen -di:jetson-device -mk:{Primary Key from IoT Central}
@@ -264,7 +264,7 @@ Compiling this project requires building against the current `public-preview` of
 
     Modify the following value to set the DeepStream configuration path and begin producing telemetry for detected objects from the attached USB camera's video stream:
 
-    (Note: ~ expansion will not work here, you must explicitily specify the path to the sample config in the current user's home directory)
+    (Note: ~ expansion will not work here, you must explicitly specify the path to the sample config in the current user's home directory)
 
     Obtain the current user with:
 
@@ -294,7 +294,7 @@ Compiling this project requires building against the current `public-preview` of
 
     ![](./assets/deepstreamdetections.png)
     
-1. Customzing the PnP Application
+1. Customizing the PnP Application
 
     For a reference to additional sample configurations, you may peruse the samples included with the DeepStream SDK on your device at /opt/nvidia/deepstream/deepstream-4.0/samples/configs/
 
