@@ -40,7 +40,7 @@ static char *dpsIdScope;
 // DPS symmetric keys for authentication
 static char *sasKey;
 
-// device ID
+// Device Id
 static char *deviceId;
 
 // TODO: Fill in DIGITALTWIN_DEVICE_CAPABILITY_MODEL_INLINE_DATA if want to make deivce self-describing.
@@ -213,13 +213,13 @@ int main(int argc, char *argv[])
 {
     if (argc == 4)
     {
-        dpsIdScope = argv[1];
-        sasKey = argv[2];
-        deviceId = argv[3];
+        deviceId = argv[1];
+        dpsIdScope = argv[2];
+        sasKey = argv[3];
     }
     else
     {
-        LogError("USAGE: nvidia-jetson-dps [DPS ID Scope] [DPS symmetric key] [Device ID]");
+        LogError("USAGE: nvidia-jetson-dps [Device ID] [DPS ID Scope] [DPS symmetric key]");
         return 1;
     }
 

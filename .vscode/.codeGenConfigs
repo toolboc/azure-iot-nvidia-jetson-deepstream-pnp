@@ -6,6 +6,16 @@
             "languageLabel": "ANSI C",
             "codeGenProjectType": "CMake",
             "deviceConnectionType": "SymmetricKey"
+        },
+        {
+            "outputDirectory": "c:\\src\\azure-iot-nvidia-jetson-deepstream-pnp\\fake",
+            "capabilityModelFilePath": "c:\\src\\azure-iot-nvidia-jetson-deepstream-pnp\\urn_nvidia_jetson_1.capabilitymodel.json",
+            "interfaceDirecoty": "c:\\src\\azure-iot-nvidia-jetson-deepstream-pnp",
+            "projectName": "fake",
+            "languageLabel": "ANSI C",
+            "codeGenProjectType": "CMake_Linux",
+            "deviceSdkReferenceType": "SourceCode",
+            "deviceConnectionType": "DpsSasKey"
         }
     ]
 }

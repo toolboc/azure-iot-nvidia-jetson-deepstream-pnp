@@ -18,46 +18,41 @@ endif()
 
 cmake_minimum_required(VERSION 2.8)
 
-# Uncomment the following line if you want to build with vcpkg of azure_iot_sdks
-# find_package(azure_iot_sdks REQUIRED)
-
 set(nvidia-jetson-dcs_h_files
-    ./jetson_impl.h
-    ./pnp_device.h
-    ./utilities/deepstream_interface.h
     ./utilities/deviceinfo_interface.h
+    ./utilities/thermalzones_interface.h
+    ./utilities/deepstream_interface.h
     ./utilities/digitaltwin_client_helper.h
     ./utilities/digitaltwin_serializer.h
-    ./utilities/thermalzones_interface.h
+    ./jetson_impl.h
+    ./pnp_device.h
 )
 
 set(nvidia-jetson-dcs_c_files
-    ./jetson_impl.c
-    ./pnp_device.c
-    ./utilities/deepstream_interface.c
     ./utilities/deviceinfo_interface.c
+    ./utilities/thermalzones_interface.c
+    ./utilities/deepstream_interface.c
     ./utilities/digitaltwin_client_helper.c
     ./utilities/digitaltwin_serializer.c
-    ./utilities/thermalzones_interface.c
+    ./jetson_impl.c
+    ./pnp_device.c
     ./main.c
 )
 
+# Add source code from azure-iot-sdk-c as a subdirectory
+#add_subdirectory(azure-iot-sdk-c)
+
 include_directories(.)
-include_directories(./utilities)
-include_directories(${PROJECT_SOURCE_DIR}/deps/parson)
-include_directories(${SHARED_UTIL_INC_FOLDER})
-include_directories(${IOTHUB_CLIENT_INC_FOLDER})
-include_directories(${DIGITALTWIN_CLIENT_INC_FOLDER})
+include_directories(${azure_iot_sdks_SOURCE_DIR}/deps/parson ${MQTT_INC_FOLDER} ${SHARED_UTIL_INC_FOLDER} ${UMOCK_C_INC_FOLDER} ${MACRO_UTILS_INC_FOLDER} ${IOTHUB_CLIENT_INC_FOLDER} ${DIGITALTWIN_CLIENT_INC_FOLDER})
 
 add_executable(nvidia-jetson-dcs ${nvidia-jetson-dcs_c_files} ${nvidia-jetson-dcs_h_files})
 
 target_link_libraries(nvidia-jetson-dcs
 parson
 iothub_client_mqtt_transport
-iothub_client_mqtt_ws_transport
 iothub_client
 digitaltwin_client
 prov_auth_client
 aziotsharedutil
 umqtt
-uuid)
+)

@@ -69,18 +69,18 @@ static int exec_prog(const char **argv)
     return 0;
 }
 
-void SendTelemetry_Succeeded_Callback(const char* interfaceName, const char* telemetryName)
+void SendTelemetry_Succeeded_Callback(const char* interfaceName)
 {
     // If needed, put your business logic here to handle the confirmation of the delivery for device telemetry on success.
 
-    LogInfo("DigitalTwin successfully delivered telemetry message for %s::%s", interfaceName, telemetryName);
+    LogInfo("DigitalTwin successfully delivered telemetry message for component %s", interfaceName);
 }
 
-void SendTelemetry_Error_Callback(const char* interfaceName, const char* telemetryName)
+void SendTelemetry_Error_Callback(const char* interfaceName)
 {
     // If needed, put your business logic here to handle the confirmation of the delivery for device telemetry on failure.
 
-    LogInfo("DigitalTwin failed to deliver telemetry message for %s::%s", interfaceName, telemetryName);
+    LogInfo("DigitalTwin failed to deliver telemetry message for %s", interfaceName);
 }
 
 void ReportProperty_Succeeded_Callback(const char* interfaceName, const char* propertyName)

@@ -215,7 +215,7 @@ Compiling this project requires building against the current `public-preview` of
 
     To pass the DPS info as command line parameters, modify the following line with the values obtained in the previous step:
     ```bash
-    ~/azure-iot-sdk-c/cmake/azure-iot-nvidia-jetson-deepstream-pnp/nvidia-jetson-dps/nvidia-jetson-dps [DPS ID Scope] [DPS symmetric key] [device ID]
+    ~/azure-iot-sdk-c/cmake/azure-iot-nvidia-jetson-deepstream-pnp/nvidia-jetson-dps/nvidia-jetson-dps [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
     With the application running, navigate to "Devices" and you should see your newly registered device, if this fails, double-check that you have published the capability model and produced a proper key with dps-keygen:
