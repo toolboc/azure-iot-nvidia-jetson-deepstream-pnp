@@ -2,11 +2,11 @@
 
 ![](./assets/dashboard.png)
 
-This project contains a set of IoT PnP applications ([nvidia-jetson-dcs](https://github.com/toolboc/azure-iot-nvidia-jetson-deepstream-pnp/tree/master/nvidia-jetson-dcs) & [nvidia-jetson-dps](https://github.com/toolboc/azure-iot-nvidia-jetson-deepstream-pnp/tree/master/nvidia-jetson-dps)) to enable remote interaction and telemetry for [DeepStream](https://developer.nvidia.com/deepstream-sdk) on [Nvidia Jetson Devices](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/) for use with [Azure IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/?WT.mc_id=github-deepstreampnp-pdecarlo).  
+This project contains a set of IoT PnP applications ([nvidia-jetson-dcs](https://github.com/toolboc/azure-iot-nvidia-jetson-deepstream-pnp/tree/master/nvidia-jetson-dcs) & [nvidia-jetson-dps](https://github.com/toolboc/azure-iot-nvidia-jetson-deepstream-pnp/tree/master/nvidia-jetson-dps)) to enable remote interaction and telemetry for [DeepStream](https://developer.nvidia.com/deepstream-sdk) on [Nvidia Jetson Devices](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/) for use with [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/?WT.mc_id=iot-0000-pdecarlo).  
 
-The nvidia-jetson-dcs application accomplishes this using a [device connection string]((https://docs.microsoft.com/en-us/azure/iot-central/quick-create-pnp-device-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json?WT.mc_id=github-deepstreampnp-pdecarlo#generate-device-key)) for connecting to an [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/tutorial-connectivity#create-an-iot-hub?WT.mc_id=github-deepstreampnp-pdecarlo) instance, while the nvidia-jetson-dps application leverages the Azure IoT [Device Provisioning Service](https://docs.microsoft.com/en-us/azure/iot-dps/?WT.mc_id=github-deepstreampnp-pdecarlo) within [IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/?WT.mc_id=github-deepstreampnp-pdecarlo) to create a self-provisioning device. 
+The nvidia-jetson-dcs application accomplishes this using a [device connection string]((https://docs.microsoft.com/azure/iot-central/quick-create-pnp-device-pnp?toc=%2Fazure%2Fiot-central-pnp%2Ftoc.json&bc=%2Fazure%2Fiot-central-pnp%2Fbreadcrumb%2Ftoc.json%3FWT.mc_id%3Dgithub-deepstreampnp-pdecarlo&WT.mc_id=iot-0000-pdecarlo#generate-device-key)) for connecting to an [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/tutorial-connectivity?WT.mc_id=iot-0000-pdecarlo#create-an-iot-hub?WT.mc_id=github-deepstreampnp-pdecarlo) instance, while the nvidia-jetson-dps application leverages the Azure IoT [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/?WT.mc_id=iot-0000-pdecarlo) within [IoT Central](https://docs.microsoft.com/azure/iot-central/?WT.mc_id=iot-0000-pdecarlo) to create a self-provisioning device. 
 
-The content in this README will focus primarily on the nvidia-jetson-dps application to demonstrate how to create a self-provisioning Azure IoT PnP app that can remotely launch DeepStream processing using a custom configuration present on your Nvidia Jetson device. This will enable you to create a cloud configurable Intelligent Video Application with device monitoring and live telemetry in [IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/?WT.mc_id=github-deepstreampnp-pdecarlo).
+The content in this README will focus primarily on the nvidia-jetson-dps application to demonstrate how to create a self-provisioning Azure IoT PnP app that can remotely launch DeepStream processing using a custom configuration present on your Nvidia Jetson device. This will enable you to create a cloud configurable Intelligent Video Application with device monitoring and live telemetry in [IoT Central](https://docs.microsoft.com/azure/iot-central/?WT.mc_id=iot-0000-pdecarlo).
 
 With this design, you can remotely activate a custom DeepStream configuration that leverages an inference model of your choice to perform object detection on any available DeepStream input sources including: camera  (USB & CSI), RTSP Streams, and local h.264/5 video files 
 
@@ -48,7 +48,7 @@ Compiling this project requires building against the current `public-preview` of
 
 1. Create an IoT Central Application and obtain the DPS connection parameters
 
-    Complete the [Create an Azure IoT Central application (preview features)](https://docs.microsoft.com/en-us/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json?WT.mc_id=github-deepstreampnp-pdecarlo) quickstart to create an IoT Central application using the Preview application template.
+    Complete the [Create an Azure IoT Central application (preview features)](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=%2Fazure%2Fiot-central-pnp%2Ftoc.json&bc=%2Fazure%2Fiot-central-pnp%2Fbreadcrumb%2Ftoc.json%3FWT.mc_id%3Dgithub-deepstreampnp-pdecarlo&WT.mc_id=iot-0000-pdecarlo) quickstart to create an IoT Central application using the Preview application template.
 
 
 1. Create a new device template in your Azure IoT Central Application 
@@ -192,7 +192,7 @@ Compiling this project requires building against the current `public-preview` of
 
 1. Retrieve the DPS connection information from Azure IoT Central, including [DPS ID Scope], [DPS Symmetric Key], and [device ID]. 
 
-    These values will be passed as parameters to the nvidia-jetson-dps application executable. To obtain these, you may reference the [steps to Generate a device key](https://docs.microsoft.com/en-us/azure/iot-central/quick-create-pnp-device-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json#generate-device-key?WT.mc_id=github-deepstreampnp-pdecarlo) then follow the steps below.
+    These values will be passed as parameters to the nvidia-jetson-dps application executable. To obtain these, you may reference the [steps to Generate a device key](https://docs.microsoft.com/azure/iot-central/quick-create-pnp-device-pnp?toc=%2Fazure%2Fiot-central-pnp%2Ftoc.json&bc=%2Fazure%2Fiot-central-pnp%2Fbreadcrumb%2Ftoc.json&WT.mc_id=iot-0000-pdecarlo#generate-device-key?WT.mc_id=github-deepstreampnp-pdecarlo) then follow the steps below.
 
     [DPS ID Scope] is obtained from the "Administration => Device Connection" section of your IoT Central Application.  
 
